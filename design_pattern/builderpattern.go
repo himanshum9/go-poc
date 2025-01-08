@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // Pizza defines the structure of the pizza
 type Pizza struct {
 	Size       string
@@ -64,24 +62,4 @@ func (b *PizzaBuilder) Build() Pizza {
 		Toppings:   b.toppings,
 		ExtraSauce: b.extraSauce,
 	}
-}
-
-// Main function to demonstrate the Builder Pattern
-func main() {
-	// Create a new pizza using the builder
-	pizza := NewPizzaBuilder().
-		SetSize("Large").
-		SetCrust("Thin").
-		SetCheese("Mozzarella").
-		AddTopping("Pepperoni").
-		AddTopping("Olives").
-		SetExtraSauce(true).
-		Build()
-
-	fmt.Println("Your Pizza Order:")
-	fmt.Printf("Size: %s\n", pizza.Size)
-	fmt.Printf("Crust: %s\n", pizza.Crust)
-	fmt.Printf("Cheese: %s\n", pizza.Cheese)
-	fmt.Printf("Toppings: %v\n", pizza.Toppings)
-	fmt.Printf("Extra Sauce: %v\n", pizza.ExtraSauce)
 }
