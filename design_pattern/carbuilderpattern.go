@@ -21,6 +21,10 @@ func (b *CarBuilder) SetColor(s string) *CarBuilder {
 	return b
 }
 
+func (b *CarBuilder) GetColour(s string) string {
+	return b.car.Colour
+}
+
 func (b *CarBuilder) SetMileage(val int) *CarBuilder {
 	b.car.Mileage = val
 	return b

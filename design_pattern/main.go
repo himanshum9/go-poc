@@ -22,5 +22,9 @@ func main() {
 
 	car := NewCarBuilder()
 	car.SetColor("White").SetMileage(10).SetBrand("Toyota").build()
+	// car.SetColor("Black").build()
 	fmt.Printf("Car: %+v\n", car)
+
+	p := FactoryMethod("A")
+	fmt.Println(p.getName())
 }
