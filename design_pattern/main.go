@@ -20,11 +20,16 @@ func main() {
 	fmt.Printf("Toppings: %v\n", pizza.Toppings)
 	fmt.Printf("Extra Sauce: %+v\n", pizza.ExtraSauce)
 
-	car := NewCarBuilder()
-	car.SetColor("White").SetMileage(10).SetBrand("Toyota").build()
+	car := NewCarBuilder().SetColor("White").SetMileage(10).SetBrand("Toyota").build()
 	// car.SetColor("Black").build()
 	fmt.Printf("Car: %+v\n", car)
 
 	p := FactoryMethod("A")
 	fmt.Println(p.getName())
+
+	instance := GetInstance(20)
+	fmt.Println(instance)
+
+	instance = GetInstance(40)
+	fmt.Println(instance)
 }
