@@ -32,4 +32,6 @@ func main() {
 
 	instance = GetInstance(40)
 	fmt.Println(instance)
+	obj = GetInstanceWithMutex(10)
+	fmt.Println(obj)
 }
