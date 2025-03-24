@@ -3,18 +3,18 @@ package main
 import "fmt"
 
 type HashMap struct {
-	data map[string]int
+	data map[string]any
 }
 
 func NewHashMap() *HashMap {
-	return &HashMap{data: make(map[string]int)}
+	return &HashMap{data: make(map[string]any)}
 }
 
-func (hmap *HashMap) Insert(key string, val int) {
+func (hmap *HashMap) Insert(key string, val any) {
 	hmap.data[key] = val
 }
 
-func (hmap *HashMap) Display(key string) int {
+func (hmap *HashMap) Display(key string) any {
 	return hmap.data[key]
 }
 
@@ -30,8 +30,9 @@ func main() {
 	hmap.Insert("a", 1)
 	hmap.Insert("b", 2)
 	hmap.Insert("c", 3)
-	hmap.Insert("a", 5)
+	hmap.Insert("d", "himansdhu")
 	val := hmap.Display("a")
 	fmt.Println(val)
 	hmap.DisplayAll()
+	fmt.Println(hmap)
 }
