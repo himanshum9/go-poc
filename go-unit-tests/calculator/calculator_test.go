@@ -4,22 +4,27 @@ import "testing"
 
 func TestCalculateDiscount(t *testing.T) {
 	type testCase struct {
+		name               string
 		minpurchasedAmount int
 		discountAmount     int
 		purchaseAmount     int
 		expected           int
 	}
 	testCases := []testCase{
-		{minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 110, expected: 100},
-		{minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 50, expected: 50}, {minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 1000, expected: 900}, {minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 500, expected: 450}, {minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 200, expected: 180},
+		{name: "Discount of 10", minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 110, expected: 100},
+		{name: "Discount of 0", minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 50, expected: 50}, {name: "Discount of 100", minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 1000, expected: 900}, {name: "Discount of 50", minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 500, expected: 450}, {name: "Discount of 20", minpurchasedAmount: 100, discountAmount: 10, purchaseAmount: 200, expected: 180},
 	}
-	for _, val := range testCases {
-		calculator := NewDiscountCalculator(val.minpurchasedAmount, val.discountAmount)
-		amount := calculator.CalculateDiscount(val.purchaseAmount)
 
-		if amount != val.expected {
-			t.Errorf("Expected:%v,got:%v", val.expected, amount) // this function is the combination of above 2 functions
-		}
+	for _, val := range testCases {
+		t.Run(val.name, func(t *testing.T) {
+			calculator := NewDiscountCalculator(val.minpurchasedAmount, val.discountAmount)
+			amount := calculator.CalculateDiscount(val.purchaseAmount)
+
+			if amount != val.expected {
+				t.Errorf("Expected:%v,got:%v", val.expected, amount) // this function is the combination of above 2 functions
+			}
+		})
+
 	}
 
 }
