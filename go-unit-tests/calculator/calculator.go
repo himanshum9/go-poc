@@ -1,12 +1,17 @@
 package calculator
 
+import "errors"
+
 type DiscountCalculator struct {
 	minpurchasedAmount int
 	discountAmount     int
 }
 
-func NewDiscountCalculator(minpurchasedAmount int, discountAmount int) *DiscountCalculator {
-	return &DiscountCalculator{minpurchasedAmount: minpurchasedAmount, discountAmount: discountAmount}
+func NewDiscountCalculator(minpurchasedAmount int, discountAmount int) (*DiscountCalculator, error) {
+	if minpurchasedAmount == 0 {
+		return &DiscountCalculator{}, errors.New("0 value not allowed")
+	}
+	return &DiscountCalculator{minpurchasedAmount: minpurchasedAmount, discountAmount: discountAmount}, nil
 }
 
 func (dc *DiscountCalculator) CalculateDiscount(purchasedAmount int) int {

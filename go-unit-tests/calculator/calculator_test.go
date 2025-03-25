@@ -17,7 +17,7 @@ func TestCalculateDiscount(t *testing.T) {
 
 	for _, val := range testCases {
 		t.Run(val.name, func(t *testing.T) {
-			calculator := NewDiscountCalculator(val.minpurchasedAmount, val.discountAmount)
+			calculator, _ := NewDiscountCalculator(val.minpurchasedAmount, val.discountAmount)
 			amount := calculator.CalculateDiscount(val.purchaseAmount)
 
 			if amount != val.expected {
@@ -25,6 +25,15 @@ func TestCalculateDiscount(t *testing.T) {
 			}
 		})
 
+	}
+
+}
+
+func TestCalculateDiscountWithZeroMinimumValue(t *testing.T) {
+
+	_, err := NewDiscountCalculator(0, 10)
+	if err == nil {
+		t.Fatalf("Should not initiate the calculation")
 	}
 
 }
