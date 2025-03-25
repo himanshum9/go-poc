@@ -11,7 +11,9 @@ func NewDiscountCalculator(minpurchasedAmount int, discountAmount int) *Discount
 
 func (dc *DiscountCalculator) CalculateDiscount(purchasedAmount int) int {
 	if dc.minpurchasedAmount < purchasedAmount {
-		return purchasedAmount - dc.discountAmount
+
+		multiplier := purchasedAmount / dc.minpurchasedAmount
+		return purchasedAmount - (dc.discountAmount * multiplier)
 	}
 	return purchasedAmount
 }
