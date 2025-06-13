@@ -11,7 +11,7 @@ func (m MyError) Error() string {
 }
 
 func doSomething() error {
-	return MyError{Msg: "Something went wrong"}
+	return MyError{Msg: "Something went horribly wrong"}
 }
 
 func main() {
