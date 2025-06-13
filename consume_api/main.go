@@ -2,44 +2,38 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
-	"log"
 	"net/http"
 )
 
-func GetData(w http.ResponseWriter, r *http.Request) {
+func GetData() {
 	url := "https://pokeapi.co/api/v2/pokemon"
 	data, err := http.Get(url)
 	if err != nil {
-		http.Error(w, "Faild To fetch data", http.StatusInternalServerError)
+		fmt.Println("something is wrong in URL:", err)
 		return
 	}
 	defer data.Body.Close()
 	if data.StatusCode == http.StatusOK {
 		body, err := io.ReadAll(data.Body)
 		if err != nil {
-			http.Error(w, "Faild To fetch body", http.StatusInternalServerError)
+			fmt.Println("faild To fetch body:", err)
 			return
 		}
-		var prettyJSON map[string]interface{}
+		var prettyJSON map[string]any
 		if err := json.Unmarshal(body, &prettyJSON); err != nil {
-			http.Error(w, "Json Decode failed", http.StatusInternalServerError)
+			fmt.Println("json Decode failed:", err)
 			return
 		}
-		w.WriteHeader(200)
 		formatted, _ := json.MarshalIndent(prettyJSON, "", "  ")
-		w.Write(formatted)
-		// fmt.Println("Formatted Response:\n", string(formatted))
+		fmt.Println("Formatted Response:\n", string(formatted))
 	}
 
 }
 
 func main() {
 
-	http.HandleFunc("/getPokeData", GetData)
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+	GetData()
 
 }
