@@ -92,3 +92,14 @@ func main() {
 	log.Println("Server running at :8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
+
+// Sequence
+// 1. App struct holds DB
+// 2. InitDB → sql.Open + Ping
+// 3. Handlers are App methods
+// 4. Router binds handler
+// 5. Server listens on :8080
+
+// Sequence for rabbit mq
+
+//Dial → Channel → QueueDeclare → Publish / Consume
