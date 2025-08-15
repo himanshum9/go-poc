@@ -734,3 +734,59 @@ Que: Syntax of Db connect?
 Que: Syntax of RabbitMq connect?
 Que: Design a rate Limitor?
 Que: Full detail understanding of authentication and authorization?
+Que: Implement Redis?(LRU etc)
+que. Implement gin for rest api's?
+Que. Implement Middleware?
+Que. Purpose of circuit breaker and how to implement that?
+
+
+
+Technical Interviewer
+13:06
+Describe how Go handles error handling with the use of multiple return values and the error interface. What are the benefits of this approach?
+Technical Interviewer
+13:09
+In a concurrent scenario, how can you detect and handle deadlocks in Go? What strategies or techniques can be employed to avoid or mitigate deadlocks?
+Technical Interviewer
+13:10
+How does Go manage dependencies with its module system, and what are some best practices for versioning and dependency management in Go projects?
+Technical Interviewer
+13:13
+Can you explain the difference between synchronous and asynchronous communication in the context of distributed systems?
+Technical Interviewer
+13:15
+How do you ensure fault tolerance in a microservices architecture?
+Technical Interviewer
+13:16
+What are the advantages of using containerization (e.g., Docker) in microservices architecture?
+Technical Interviewer
+13:18
+What’s the difference between EC2, ECS/Fargate, and Lambda?
+Technical Interviewer
+13:19
+You deployed an RDS instance without enabling backups. How do you enable backups without downtime?
+Explain the difference between SNS and SQS, and when to use each.
+Technical Interviewer
+13:21
+You need to allow only a specific set of IP addresses to access an API Gateway endpoint. How would you do it?
+Technical Interviewer
+13:24
+Write a Go HTTP server with one endpoint /greet?name=John that responds with:
+Hello, John!
+If the name query parameter is missing, return "Hello, Guest!".
+https://www.programiz.com/golang/online-compiler/
+vkj-dage-wbr
+
+
+
+
+
+------------------------Kubernetes All Questions for interview---------------------------
+
+
+Que: What is Kubernetes (k8s) and why?
+ans: Container orchestrator.
+    Manages-> deployments, scaling, auto healing, load balancing of containers etc.
+    think of it as an os for containers.
+
+Que: 

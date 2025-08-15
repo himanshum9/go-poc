@@ -7,9 +7,10 @@ func (s Stack) append(i int) {
 }
 
 func main() {
+	s := Stack{}
 	var value Stack = []int{1, 2, 3, 4, 5, 6}
-	for i := range value {
-		Stack.append(i)
+	for _, val := range value {
+		s.append(val)
 	}
 
 }
