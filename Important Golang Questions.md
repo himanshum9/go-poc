@@ -263,7 +263,7 @@ Generics (any is an alias for interface{} but used in generics)
     Avoids type assertions, supports reusable typed functions.
 
 Que: How does Go’s scheduler manage goroutines, and how would you debug a goroutine leak?
-Ans: Go scheduler is the heart of go runtime which makes concurrency/parallilsm so easy for the languagee.It is based on M:n schdulling where m go routine are bind to n os threads.there is a processor P which is bind with the OS and has a local queue. If there is enough space in the local queue the go routine sits in that and if it is full it sits in the global queue.The goroutine itself initialized by the pool.The go schduller manages load of each thread,assiging different processor goroutine to different to manage the load.To prevent the goroutine leaks we can check the number of running goroutine before entring the function and after exiting the function.we need to take care of how the goroutine is sending data and how we are recieving it.
+Ans: Go scheduler is the heart of go runtime which makes concurrency/parallilsm so easy for the languagee.It is based on M:n schdulling where m go routine are bind to n os threads.there is a processor P which is bind with the OS and has a local queue. If there is enough space in the local queue the go routine sits in that and if it is full it sits in the global queue.The goroutine itself initialized by the pool.The go schduller manages load of each thread,assiging different processor goroutine to different to manage the load.To prevent the goroutine leaks we can check the number of running goroutine before entring the function and after exiting the function.we need to take care of how the goroutine is sending data and how we are recieving it, also pprof is used to catch the goroutine leak
 
 Que: How do we deploy things in production?
 Que: How do we manage the deployment?
@@ -434,6 +434,39 @@ Write a golang package that stores KeyValueStore and write methods like Get, Set
 Arr: [1, 3, 5, 7, 10, 2, 4] Product: 70. Give the indexes of the two integers that equals the product?
 Develop rest apis, where you forward the request towards dummy open source endpoints to fetch json response?
 Design and develop an application for payments gateway where you should use Payment interface with Pay method and provide different methods like UPI, credit card and give discount as per payment method.
+
+Que: What is Semophore in golang, have you heard about it?
+
+
+
+Que: What is closure in go?
+Ans: A closure in go is function that can capture variable from its outer function and can store itself even when the outer function is already executed.
+
+strconv.Itoa() - > integer to string
+strconv.Atoi()  -> string to integer
+strconv.ParseFloat().  -> str to float
+
+-------Strings package function
+str := "    apple,  orange,banana,orange.  "
+
+
+parts := strings.Split(str,",").  -> convert string to array
+strings.Count(str,"orange"). - > counting occurance in strings
+strings.TrimSpace(str).  -> trim the whitespace before and after text
+strings.Join([]string{str1,str2}, " ").  -> concat 2 strings
+
+-------- time package function:
+curr := time.Now()   -> will give the current time (with extra data like utc etc)
+curr.Format("2006-01-02 15:04:05") - > formated time in string
+val := curr.Format("2006-01-02 3:04 PM"). -> for 12 hr time in string
+time.Parse("2006-01-02",val) - > convert it to time.Time
+time.Sleep(4* time.Second)  -> add sleep time
+
+
+---------- files operation package os and io/ioutil
+file,err := os.Create("example.txt") -> it will create new file or truncate existing
+out,err := io.WriteString(file, "This is the strind") - >it will add string in file
+
 
 Que: WHat is Rest Api?
 Ans: Mechanism for communication between services, it is based on http protocols and uses mainly 4 methods(get,post,put,delete),it uses url to identify resource and it is stateless in nature(each request independent of future and past)
@@ -735,6 +768,7 @@ Que: Syntax of RabbitMq connect?
 Que: Design a rate Limitor?
 Que: Full detail understanding of authentication and authorization?
 Que: Implement Redis?(LRU etc)
+Ans: https://youtu.be/UpzaB6bX7tc?si=RvrAsqW7MhBH3Inx(all redis related problems)
 que. Implement gin for rest api's?
 Que. Implement Middleware?
 Que. Purpose of circuit breaker and how to implement that?
@@ -788,5 +822,14 @@ Que: What is Kubernetes (k8s) and why?
 ans: Container orchestrator.
     Manages-> deployments, scaling, auto healing, load balancing of containers etc.
     think of it as an os for containers.
+
+Que: What happens when you run kubectl apply -f deployment.yaml?
+Ans: yaml file goes to api server, stored in etcd clustered memory,-> controller notice the desired state-> schduler finds the node and kubelet start the pod.
+
+Que: Pod vs ReplicaSet vs Deployment vs StatefulSet?
+Ans: Pod - > Single running app container.(Eg -> Nginx pod)
+     ReplicaSet -> Makes sure n copies of the pod should run.
+     Deployment -> manages Replicaset and allow updates/rollback
+     StatefulSet - > similar to deployment but manages storage and pod names and make them fixed.
 
 Que: 
