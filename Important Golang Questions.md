@@ -466,6 +466,33 @@ time.Sleep(4* time.Second)  -> add sleep time
 ---------- files operation package os and io/ioutil
 file,err := os.Create("example.txt") -> it will create new file or truncate existing
 out,err := io.WriteString(file, "This is the strind") - >it will add string in file
+file.Close() - > always when done working with file
+buff := make([]byte, 1024)
+for {
+n,err := file.Read(buff). - > read the file content into buffer
+if err == io.EOF{
+    break;
+}
+fmt.Println(string(buff[:n]))
+}
+
+####if we do not want to buffer read we can completly read the data using ioutil.ReadFile function
+
+content,err := ioutil.ReadFile("example.txt")-> read the file and store byte slice []byte
+
+fmt.Println(string(content))
+
+
+net/url Package -> For everything related to url's
+
+myUrl := "https://example.com:8080/path/to/resource?key1=value1&key2=value2"
+
+parsedUrl,err:= url.Parse(myUrl)
+parsedUrl.Scheme -> will give me http/https
+parsedUrl.Host - > will give me hostname
+parsedUrl.Path - > will give me PATH of the url
+
+
 
 
 Que: WHat is Rest Api?
