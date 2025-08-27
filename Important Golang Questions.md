@@ -375,6 +375,12 @@ Ans: Yes, there can be multiple init function in a file.
 Que: What type of authentication does your company implemented?
 Ans:I haven’t worked on implementing the authentication and authorization myself, but I’ve interacted with it closely. In our Go backend, we use JWTs for authentication. When users log in, a token is issued and passed in the Authorization header as a Bearer token—something I regularly work with while testing APIs in Postman or integrating frontend requests.
 
+Que: What is JWT token?
+Ans: json web token, used for authentication and authorization.It has 3 parts:
+1. Header: token type and signing algorithm
+2. Payload: payload consist of claims and claims tells about entity like user,employee etc
+3. Signature: created with the use of encoded header,payload and secret algo mentioned in header.
+
 The backend validates this token on each request. If the token is valid and not expired, the request is allowed; otherwise, it's rejected. For authorization, we follow a Role-Based Access Control model, so different user roles determine access to certain API endpoints or frontend views. On the frontend, built in Vue.js, we use navigation guards to control access to routes based on user roles or login status.
 
 So, while I haven't developed the system myself, I understand how it works and how to work with it effectively in both backend and frontend contexts.
@@ -517,6 +523,11 @@ Ans: All steps Regarding deployment process:
 
 Que: how go garbage collection works?
 Ans: Used Mark and Sweep algorithm,Mark all the unreachable variables that are not needed and sweep them ,it works concurrently with the program, so very minimum to nill down time is faced,it also automatically keeps the longer vairable into heap from stack so that it does not have to check everytime.
+
+
+Que: Hoe to decode in json?
+Ans: json.NewDecoder(r.Body).Decode(&myStruct)
+    json.UnMarshal(io.ReadAll(r.Body),&mystruct)
 
 
 
@@ -859,4 +870,64 @@ Ans: Pod - > Single running app container.(Eg -> Nginx pod)
      Deployment -> manages Replicaset and allow updates/rollback
      StatefulSet - > similar to deployment but manages storage and pod names and make them fixed.
 
+
+gcloud container clusters get-credentials CLUSTER_NAME --region REGION
+|^for authentication
+
+kubectl config get-clusters 
+
 Que: 
+
+
+
+
+
+
+
+
+
+
+
+Employees(id, name, dept_id, salary, manager_id)
+Departments(id, name)
+
+second highest salary
+SLEECT MAX(SALARY) FROM employees WHERE salary < (SELECT MAX(salary) from employyes)
+
+Find employees who earn more than their manager.
+
+SELECT * FROM employees e
+JOIN employees m on e.manager_id = m.id
+WHERE e.salary > m.salary
+
+Find duplicate employee names.
+
+SELECT name, count(*) FROM employees group by name HAVING count(*) > 1;
+
+Get department with the highest average salary.
+
+SELECT department,avg(salary) as avgSal from employee JOIN
+department on department.id = employee.id
+WHERE Group by employee.name order by avgSal DESC LIMIT 1;
+
+Find nth highest salary (say 3rd highest).
+
+SELECT salary From employee WHERE salary = (SELECT DISTINCT(salary) from employee ORDER by salary DESC LIMIT 1 OFFSET 2);
+
+List employees who don’t belong to any department.
+
+SELECT * FROM employee e 
+left join department d on d.id = e.dept_id 
+WHERE e.id IS NULL;
+
+Show employees with the highest salary in each department.
+
+
+
+
+
+
+
+
+
+Find departments with no employees.
