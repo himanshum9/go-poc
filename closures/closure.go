@@ -1,5 +1,7 @@
 package main
 
+//A closure in Go (or most languages) is a function that captures variables from its surrounding scope and can use or modify them even after that scope has ended.
+
 import "fmt"
 
 func counter() func() int {

@@ -777,7 +777,7 @@ Ans: Docker creates a default bridge network where containers can communicate.
 Que 5: What is docker compose and when would you use it?
 Ans: Docker compose is used for managing multi container app via docker-compose.yml files, Ideal for managing services like app + db + cache together.
 
-Que 6: How do you optimize docker  image size?
+Que 6: How do you optimize docker image size?
     -> Use minimal base image
     -> Combine run Commands(each run adds new layer so combining them reduces layer)
     -> Avoid Unneccessary Files
@@ -892,7 +892,7 @@ Employees(id, name, dept_id, salary, manager_id)
 Departments(id, name)
 
 second highest salary
-SLEECT MAX(SALARY) FROM employees WHERE salary < (SELECT MAX(salary) from employyes)
+SELECT MAX(SALARY) FROM employees WHERE salary < (SELECT MAX(salary) from employyes)
 
 Find employees who earn more than their manager.
 
