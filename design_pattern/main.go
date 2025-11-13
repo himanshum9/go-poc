@@ -34,4 +34,13 @@ func main() {
 	fmt.Println(instance)
 	obj = GetInstanceWithMutex(10)
 	fmt.Println(obj)
+
+	checkout := &Checkout{}
+	checkoutStrategy1 := Paypal{Email: "abc@gmail.com"}
+	checkoutStrategy2 := CreditCard{CardNumber: "1234 5678 9012"}
+	checkout.SetStrategy(checkoutStrategy1)
+	checkout.Process(200)
+	checkout.SetStrategy(checkoutStrategy2)
+	checkout.Process(20000)
+
 }
