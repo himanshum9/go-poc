@@ -1,3 +1,5 @@
+// Challenge 3 · Minimum Shipping Capacity
+
 // Prompt: For n warehouses containing piles[i] packages, and a single truck with h hours before a deadline, find the minimum capacity k (packages/hour) that ships everything in time. The truck visits one warehouse per hour and, if a warehouse has fewer than k packages, ships all of them then idles for the rest of the hour.
 // Output: Return the smallest integer k that satisfies the requirement.
 // Examples:

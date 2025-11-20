@@ -1,3 +1,5 @@
+//Challenge 2 · Concurrent Job Dispatcher
+
 // Scenario: Build a dispatcher that assigns a list of jobs to workers concurrently.
 // Requirements:
 // Spawn N worker goroutines.
