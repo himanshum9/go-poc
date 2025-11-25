@@ -876,7 +876,21 @@ gcloud container clusters get-credentials CLUSTER_NAME --region REGION
 
 kubectl config get-clusters 
 
-Que: 
+Que: Difference between services and kube-proxy?
+Ans: Service gives a stable virtual IP inside the cluster.
+     Kube-proxy create routing rules and tables so correct traffic come to correct pod.
+
+Que: Types of services in k8?
+Ans: ClusterIp:
+    -> Exposes the services inside the cluster only. used for internal microservice to microservice communication.
+    NodePort:
+    -> This is will open a port on every worker nod and forward traffic to the service.Used for direct access of resource with ip and port without loadbalancer.
+    LoadBalancer:
+    -> Creates a cloud load balancer (aws/gcp/azure) and route the traffic to the pods.
+    ExternalName:
+
+    headless Service:
+
 
 
 
@@ -931,3 +945,40 @@ Show employees with the highest salary in each department.
 
 
 Find departments with no employees.
+
+
+
+
+--------------------------Networking Related Questions------------------------------------
+
+Que: What is TCP/IP?
+Ans: TCP is main network model used for internt.
+It tells how data will be broken in packets and how it will be transferred and then reassembled.
+It has 4 layers:
+1. Network Interface.
+2. Internet.
+3. Transport
+4. Application
+
+Que: Diff between TCP vs UDP?
+Ans: TCP:
+    1. Reliable
+    2. Guarntee delivery and guarntee ordering using ack and proper handshake.
+    3. Makes complete connection.
+    4. used in http,https,ftp and ssh
+    UDP:
+    1. Very fast compare to TCP.
+    2. No guarntee of delivery.
+    3. Package loss possible
+    4. No handshake.
+    5. used in streaming data, gaming etc
+
+Que: What is IP address?
+Ans: Identity of a device on network.
+    formed by the combination of subnet mask and host.
+
+Que: diff between load balancer and reverse proxy?
+Ans: Both of them sits in front of server.
+1. reverse proxy forwards the client request to them.
+2. Load balance not just forward but decide which server will recieve the traffic.
+3. All load balancer are reverse proxy but not all reverse proxy is load balancer
