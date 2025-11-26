@@ -359,6 +359,16 @@ What happens when you close a channel that's already closed? What about sending/
 Ans: 1. Closing a already closed channel will give panic.
 Sending data to a closed channel will also panic.But recieving data from a closed channel will not panic but return 0 value.
 
+Que: How do channels work internally?
+Ans: Channels are just a sugar coating of a functionality. Alot many things are happening internally.
+Components Involved -> hchan -> a struct which stores buffer(circular queue)-> multiple pointers field is there in hchan.
+                        sodog -> another struct
+                        maitq -> another struct
+multiple functions involved like:
+    MakeChan()
+    chanSend()
+    chanRecv()
+Channels are internally stored in heap meaning hchan struct is stored in heap and its reference is then passed everywhere.
 
 
 Que: How does go handle method overloading?
